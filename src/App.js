@@ -1,27 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './components/Header'
+import './App.css';
+import backgroundImage from './assets/fuscao.jpg';
 
 function App() {
+const [projects, setProjects] = useState(['Desenvolvimento de app', 'Front-end web']);
+
+  function userAddProject() {
+    setProjects([...projects, `New Project ${Date.now()}`]);
+  }
+
   return (
     <>
-      <Header title="FirstPage">
+      <Header title="Projects" />
+
+      <img src={backgroundImage}/>
         <ul>
-          <li>Login</li>
-          <li>Logout</li>
+          {projects.map(project => <li key='project'>{project}</li>)}
         </ul>
-      </Header>
-      <Header title="SecondPage">
-        <ul>
-          <li>HomePage</li>
-          <li>Projects</li>
-        </ul>
-      </Header>
-      <Header title="ThirdPage">
-        <ul>
-          <li>CreateProject</li>
-          <li>EditProject</li>
-        </ul>
-      </Header>
+
+        <button type="button" onClick={userAddProject}>Add NewProject</button>
     </>
   );
 }

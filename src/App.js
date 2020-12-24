@@ -17,7 +17,7 @@ const [projects, setProjects] = useState([]);
 
     const response = await api.post('projects', {
       title : `Novo Projeto ${Date.now()}`,
-      owner: "Glauber Silva"
+      owner: "Alessom Klaus"
     });
 
     const project = response.data;

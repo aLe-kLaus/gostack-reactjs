@@ -10,10 +10,19 @@ const [projects, setProjects] = useState([]);
     api.get('projects').then(response => {
       setProjects(response.data);
     });
-  });
+  }, []);
 
-  function userAddProject() {
-    setProjects([...projects, `New Project ${Date.now()}`]);
+  async function userAddProject() {
+    // setProjects([...projects, `New Project ${Date.now()}`]);
+
+    const response = await api.post('projects', {
+      title : `Novo Projeto ${Date.now()}`,
+      owner: "Glauber Silva"
+    });
+
+    const project = response.data;
+    
+    setProjects([ ...projects, project]);
   }
 
   return (
